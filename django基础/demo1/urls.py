@@ -20,4 +20,5 @@ from .views import *
 
 urlpatterns = [
     path('test_db2/', test_db2),
+    path('test_db3/', test_db3),
 ]
