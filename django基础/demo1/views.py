@@ -1,8 +1,9 @@
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Employee, JobChoices
 from datetime import date
+
 
 # Create your views here.
 
@@ -15,6 +16,12 @@ def test_db2(request):
     # result = Employee.objects.filter(name__contains='w') #模糊查询
     # result = Employee.objects.filter(entry_date__year=2025) #查询在2025年入职的所有员工
     query = Employee.objects.filter(Q(Q(entry_date__year=2025) | Q(Q(sal__gt=5000) & Q(bonus__gt=5000))))
+
+    # 查询所有员工的平均工资
+    # result = Employee.objects.aggregate(my_sal_avg=Avg('sal'))
+    result  = Employee.objects.raw('select * from t_mep where sal > %s',(5000,))
+    print(result)
+
 
     for emp in query:
         print(emp)
