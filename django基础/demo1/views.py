@@ -1,4 +1,4 @@
-from django.db.models import Q, Avg
+from django.db.models import Q, F
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Employee, JobChoices
@@ -15,15 +15,14 @@ def test_db2(request):
 
     # result = Employee.objects.filter(name__contains='w') #模糊查询
     # result = Employee.objects.filter(entry_date__year=2025) #查询在2025年入职的所有员工
-    query = Employee.objects.filter(Q(Q(entry_date__year=2025) | Q(Q(sal__gt=5000) & Q(bonus__gt=5000))))
+    # query = Employee.objects.filter(Q(Q(entry_date__year=2025) | Q(Q(sal__gt=5000) & Q(bonus__gt=5000))))
+    #
+    # for emp in query:
+    #     print(emp)
 
-    # 查询所有员工的平均工资
-    # result = Employee.objects.aggregate(my_sal_avg=Avg('sal'))
-    result  = Employee.objects.raw('select * from t_mep where sal > %s',(5000,))
-    print(result)
+    # 修改：将2019年入职的员工，统一增加津贴200
+    Employee.objects.filter(entry_date__year=2019).update(bonus=F('bonus') + 200)
 
-
-    for emp in query:
-        print(emp)
-
+    #删除：删除工资小于4000的员工
+    Employee.objects.filter(sal__lt=4000).delete()
     return HttpResponse('test__db2')
