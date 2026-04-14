@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'demo',
     'demo1',
+    'demo2',
     'django_orm',
 ]
 

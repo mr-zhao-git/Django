@@ -20,6 +20,7 @@ class Employee(models.Model):
     sal = models.IntegerField(verbose_name='级别薪资')
     bonus = models.SmallIntegerField(default=0, verbose_name='津贴')
     is_leave = models.BooleanField(default=False, verbose_name='是否离职')
+    dept = models.BooleanField(default=False, verbose_name='所在部门')
     create_time = models.DateTimeField(auto_created=True, auto_now_add=True, verbose_name='创建时间')
     update_time = models.DateTimeField(verbose_name='修改时间', auto_now=True)  # auto_now=True：当数据添加/更新是，设置当前时间为默认值
 
