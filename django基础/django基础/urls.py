@@ -23,5 +23,5 @@ urlpatterns = [
     path('demo1/',include('demo1.urls')),  #如果前面不写表示所有的请求近来都去访问demo.urls
     path('demo2/',include('demo2.urls')),  #如果前面不写表示所有的请求近来都去访问demo.urls
     path('django_orm/',include('django_orm.urls')),
-    path('demo_django/',include('demo_django.urls')),
+    path('demo3/',include('demo3.urls')),
 ]

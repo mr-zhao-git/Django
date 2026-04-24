@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'demo',
     'demo1',
     'demo2',
+    'demo3',
     'django_orm',
-    'demo_django',
 ]
 
 MIDDLEWARE = [

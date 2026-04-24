@@ -34,10 +34,10 @@ def test_db3(request):
     # d3 = DeptModel.objects.create(name='贝克部分有限公司', parent=d1)
     # d4 = DeptModel.objects.create(name='小泰部分有限公司', parent=d2)
 
-    DeptModel.objects.get(pk=2).delete()  # 删除泰科部分有限公司
+    # DeptModel.objects.get(pk=2).delete()  # 删除泰科部分有限公司
 
-    d2 = DeptModel.objects.create(name='泰科部分有限公司', parent_id=1)
-    DeptModel.objects.get(pk=4).update(parent_id=d2.id)
+    # d2 = DeptModel.objects.create(name='泰科部分有限公司', parent_id=1)
+    # DeptModel.objects.get(pk=4).update(parent_id=d2.id)
 
     # 查询名字为：北科有限公司下的所有子公司
     DeptModel.objects.filter(parebt__name='北科有限公司')

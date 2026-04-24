@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test1</title>
+</head>
+<body>
+{{ emp.id }},{{ emp.name }},{{ emp.sal }},{{emp.dept.name}}
+<br>
+<!--员工所有的第一个角色是-->
+员工:{{emp.name}},他的第一个角色是:{{emp.roles.all.0.name}},他的第二个角色是:{{emp.roles.all.1.name}}
+<br>
+<!--列表的下标可以直接.0.1.2.3.4-->
+<!--字典访问数据直接.key就可以-->
+第一个薪资大于5000的员工:{{date1.0.name}},他的薪资是:{{date1.0.sal}}
+第二个薪资大于5000的员工:{{date1.1.name}},他的薪资是:{{date1.1.sal}}
+</body>
+</html>
