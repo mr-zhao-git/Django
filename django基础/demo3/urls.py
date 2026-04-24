@@ -19,5 +19,6 @@ from django.urls import path, include, re_path
 from .views import *
 
 urlpatterns = [
-    path('test1/', test1)
+    path('test1/', test1),
+    path('test2/', test2)
 ]

@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
+from django.conf.global_settings import STATICFILES_DIRS
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -26,7 +27,6 @@ SECRET_KEY = 'django-insecure-+et@-92a+u6d1ccp^=i%wrn((7+esfbawwh^)-fyaomjus)*^h
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-#整个项目的主路由
+# 整个项目的主路由
 ROOT_URLCONF = 'django基础.urls'
 
 TEMPLATES = [
@@ -74,13 +74,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django基础.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 
-#mysql数据库的驱动包（pymysql、mysqlclient等）
-#Django框架默认支持的数据库驱动包为：mysqlclient
+# mysql数据库的驱动包（pymysql、mysqlclient等）
+# Django框架默认支持的数据库驱动包为：mysqlclient
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
@@ -93,7 +92,6 @@ DATABASES = {
         'NAME': 'Django_ORM'  # 数据库名字
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -113,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
@@ -125,27 +122,30 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/'  # 访问晶体啊文件的前缀
 
-#打印由ORM创的SQL语句
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # 静态文件在哪里目录
+]
+
+# 打印由ORM创的SQL语句
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'console':{
-            'level':'DEBUG',
-            'class':'logging.StreamHandler',
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
         'django.db.backends': {
             'handlers': ['console'],
             'propagate': True,
-            'level':'DEBUG',
+            'level': 'DEBUG',
         },
     }
 }

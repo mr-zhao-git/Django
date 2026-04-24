@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test2</title>
+</head>
+<body>
+传入emp，如果emp薪资小于6000,不显示薪资的值
+{% if emp.sal > 6000 %}
+{{ emp.sal }}
+<br>
+{% else %}
+薪资低于6000,不进行显示
+{% endif %}
+
+<!--{% if emp.name == 'zs'%}-->
+<!--{% elif emp.name == 'ls'%}-->
+<!--{% endif %}-->
+
+<br>
+id为3的员工所拥有的角色
+<table>
+    <tr>
+        <td>序号</td>
+        <td>角色</td>
+    </tr>
+    {% for role in emp.roles.all %}
+    <tr>
+        <!--
+        counter0：表示序号从0开始
+        counter：表示序号从1开始
+        revcounter0：表示序号倒序开始，到0结束
+        revcounter：表示序号倒序开始，到1结束
+        -->
+        <td>
+            {% if forloop.first %}
+            -->
+            {% endif %}
+            {{ forloop.counter }}
+            {% if forloop.last%}
+            <<<
+            {% endif %}
+        </td>
+        <td>{{ role.name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<hr>
+薪资大于4000的所有员工的信息
+<table>
+    <tr>
+        <td>序号</td>
+        <td>员工编号</td>
+        <td>员工姓名</td>
+        <td>员工薪资</td>
+    </tr>
+    {% for dct in data1 reversed %} <!-- reversed：进行反向循环 -->
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ dct.id }}</td>
+        <td>{{ dct.name }}</td>
+        <td>{{ dct.sal }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
